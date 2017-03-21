@@ -34,7 +34,7 @@ export const PostList = (props) => (
         <SimpleList
           primaryText={record => record.title}
           secondaryText={record => `${record.views} views`}
-          tertiaryText={record => new Date(record.published_at).toLocalDateString()}
+          tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
         />
       }
       medium={

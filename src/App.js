@@ -2,14 +2,14 @@
 import React from 'react'
 import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest'
 import { Delete } from 'admin-on-rest/lib/mui'
-// import { PostList, PostEdit, PostCreate } from './models/posts'
+import { PostList, PostEdit, PostCreate } from './models/posts'
 import { UserList, UserEdit, UserCreate } from './models/users'
 import { BusinessList } from './models/businesses'
 import { ServiceLocationsList } from './models/service_locations'
 import { SkillsList } from './models/skills'
 
 // Icons
-// import PostIcon from 'material-ui/svg-icons/action/book'
+import PostIcon from 'material-ui/svg-icons/action/book'
 import UserIcon from 'material-ui/svg-icons/social/group'
 import BusinessIcon from 'material-ui/svg-icons/social/domain'
 import ServiceIcon from 'material-ui/svg-icons/social/public'
@@ -61,10 +61,11 @@ const ajTheme = {
 
 const App = () => (
   <Admin theme={ajTheme} authClient={authClient} dashboard={Dashboard} restClient={jsonServerRestClient('http://jsonplaceholder.typicode.com')}>
-    <Resource name='Users' list={UserList} edit={UserEdit} create={UserCreate} remove={Delete} icon={UserIcon} />
-    <Resource name='Businesses' list={BusinessList} icon={BusinessIcon} />
-    <Resource name='Service Locations' list={ServiceLocationsList} icon={ServiceIcon} />
-    <Resource name='Skills' list={SkillsList} icon={SkillIcon} />
+    <Resource name='posts' list={PostList} edit={PostEdit} create={PostCreate} remove={Delete} icon={PostIcon} />
+    <Resource name='users' list={UserList} edit={UserEdit} create={UserCreate} remove={Delete} icon={UserIcon} />
+    <Resource name='businesses' list={BusinessList} icon={BusinessIcon} />
+    <Resource name='service_locations' list={ServiceLocationsList} icon={ServiceIcon} />
+    <Resource name='skills' list={SkillsList} icon={SkillIcon} />
   </Admin>
 )
 
