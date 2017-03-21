@@ -9,7 +9,7 @@ import {
     fetchUtils
 } from 'admin-on-rest'
 
-const API_URL = 'http://localhost:3000/'
+const API_URL = 'http://localhost:3004/'
 
 /**
  * @param {String} type One of the constants appearing at the top if this file, e.g. 'UPDATE'
