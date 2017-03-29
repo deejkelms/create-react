@@ -1,4 +1,3 @@
-// /* eslint-disable */
 import React from 'react'
 import {
   Filter,
@@ -12,7 +11,6 @@ import {
   TextField,
   EditButton,
   DisabledInput,
-  // LongTextInput,
   ReferenceInput,
   SelectInput,
   SimpleForm,
@@ -31,12 +29,12 @@ const UserFilter = (props) => (
 )
 
 export const UserList = (props) => (
-  <List {...props} filters={<UserFilter />}>
+  <List title='All Users' {...props} filters={<UserFilter />}>
     <Responsive
       small={
         <SimpleList
           primaryText={record => record.name}
-          secondaryText={record => `${record.views} views`}
+          secondaryText={record => `${record.email} email`}
           tertiaryText={record => new Date(record.published_at).toLocalDateString()}
          />
       }
@@ -55,19 +53,18 @@ export const UserList = (props) => (
 )
 
 const UserName = ({ record }) => {
-  return <span>Post {record ? `"${record.name}"` : ''}</span>
+  return <span>User {record ? `"${record.name}"` : ''}</span>
 }
 
 export const UserEdit = (props) => (
-  <Edit name={<UserName />} {...props}>
+  <Edit title='Edit User' name={<UserName />} {...props}>
     <SimpleForm>
       <DisabledInput source='id' />
-      <ReferenceInput label='User' source='userId' reference='users'>
-        <selectInput optionText='name' />
-      </ReferenceInput>
-      <TextField source='name' />
-      <EmailField source='email' />
-      <TextField source='phone' />
+      <TextInput source='name' />
+      <TextInput source='email' />
+      <TextInput label='Address' source='address.street' />
+      <TextInput label='City' source='address.city' />
+      <TextInput label='Zip Code' source='address.zipcode' />
     </SimpleForm>
   </Edit>
 )
@@ -75,12 +72,12 @@ export const UserEdit = (props) => (
 export const UserCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput label='User' source='userId' reference='users' allowEmpty>
-        <SelectInput optionText='name' />
-      </ReferenceInput>
-      <TextField source='name' />
-      <EmailField source='email' />
-      <TextField source='phone' />
+      <TextInput source='name' />
+      <TextInput source='email' />
+      <TextInput source='phone' />
+      <TextInput source='street' />
+      <TextInput source='city' />
+      <TextInput source='zip' />
     </SimpleForm>
   </Create>
 )
