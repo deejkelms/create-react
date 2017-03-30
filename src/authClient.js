@@ -1,10 +1,10 @@
-/* eslint-disable */
+// /* eslint-disable */
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_CHECK } from 'admin-on-rest'
 
 export default (type, params) => {
   if (type === AUTH_LOGIN) {
     const { email, password } = params
-    const request = new Request('http://localhost:8080/v1/auth/login', {
+    const request = new Request('http://localhost:3000/v1/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: new Headers({ 'Content-Type': 'application/json' })
@@ -17,7 +17,8 @@ export default (type, params) => {
         return response.json()
       })
       .then(({ token }) => {
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', token.key)
+        console.log(token)
       })
   }
   if (type === AUTH_LOGOUT) {
@@ -25,7 +26,7 @@ export default (type, params) => {
     return Promise.resolve()
   }
   if (type === AUTH_CHECK) {
-    return localStorage.getItem('email') ? Promise.resolve() : Promise.reject({ redirectTo: '/no-access' })
+    return localStorage.getItem('token') ? Promise.resolve() : Promise.reject({ redirectTo: '/login' })
   }
   return Promise.reject('Unkown method')
 }

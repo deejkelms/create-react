@@ -56,8 +56,8 @@ export default (apiUrl, httpClient = fetchJson) => {
           [params.target]: params.id,
           _sort: field,
           _order: order,
-          _start: (page - 1) * perPage,
-          _end: page * perPage
+          _page: page,
+          _limit: perPage
         }
         url = `${apiUrl}/${resource}?${queryParameters(query)}`
         break

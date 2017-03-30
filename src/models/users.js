@@ -40,11 +40,11 @@ export const UserList = (props) => (
       }
       medium={
         <Datagrid>
-          <TextField source='id' />
-          <TextField source='name' />
+          <TextField label='First Name' source='first_name' />
+          <TextField label='Last Name' source='last_name' />
           <EmailField source='email' />
-          <TextField source='phone' />
-          <TextField label='Address' source='address.street' />
+          <TextField label='Phone' source='phone_number' />
+          <TextField label='Zip Code' source='zip_code' />
           <EditButton />
         </Datagrid>
       }
@@ -60,11 +60,11 @@ export const UserEdit = (props) => (
   <Edit title='Edit User' name={<UserName />} {...props}>
     <SimpleForm>
       <DisabledInput source='id' />
-      <TextInput source='name' />
+      <TextInput label='First Name' source='first_name' />
+      <TextInput label='Last Name' source='last_name' />
       <TextInput source='email' />
-      <TextInput label='Address' source='address.street' />
-      <TextInput label='City' source='address.city' />
-      <TextInput label='Zip Code' source='address.zipcode' />
+      <TextInput label='Phone' source='phone_number' />
+      <TextInput label='Zip Code' source='zip_code' />
     </SimpleForm>
   </Edit>
 )
@@ -72,12 +72,12 @@ export const UserEdit = (props) => (
 export const UserCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source='name' />
+      <DisabledInput source='id' />
+      <TextInput label='First Name' source='first_name' />
+      <TextInput label='Last Name' source='last_name' />
       <TextInput source='email' />
-      <TextInput source='phone' />
-      <TextInput source='street' />
-      <TextInput source='city' />
-      <TextInput source='zip' />
+      <TextInput label='Phone' source='phone_number' />
+      <TextInput label='Zip Code' source='zip_code' />
     </SimpleForm>
   </Create>
 )
