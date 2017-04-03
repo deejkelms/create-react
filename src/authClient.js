@@ -3,7 +3,8 @@ import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_CHECK } from 'admin-on-rest'
 
 export default (type, params) => {
   if (type === AUTH_LOGIN) {
-    const { email, password } = params
+    const { username, password } = params
+    const email = username
     const request = new Request('http://localhost:3000/v1/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),

@@ -12,6 +12,7 @@ import BusinessIcon from 'material-ui/svg-icons/social/domain'
 import ServiceIcon from 'material-ui/svg-icons/social/public'
 import SkillIcon from 'material-ui/svg-icons/action/build'
 
+// import MyLoginPage from './loginPage'
 import Dashboard from './dashboard'
 import authClient from './authClient'
 const httpClient = (url, options) => {
