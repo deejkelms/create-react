@@ -27,7 +27,8 @@ const LocationFilter = (props) => (
   </Filter>
 )
 
-export const LocationList = (props) => (
+export const LocationList = (props) => {
+  return(
   <List title='All Locations' {...props} filters={<LocationFilter />}>
     <Responsive
       small={
@@ -40,15 +41,16 @@ export const LocationList = (props) => (
       medium={
         <Datagrid>
           <TextField label='Zip Code' source='code' />
-          <TextField source='borough' />
+          <TextField source='county' />
           <TextField source='neighborhood' />
-          <BooleanField source='status' />
+          <TextField source='state' />
           <EditButton />
         </Datagrid>
         }
       />
   </List>
- )
+)
+}
 
 const LocationCode = ({ record }) => {
   return <span>Zip {record ? `"${record.code}"` : ''}</span>
@@ -58,9 +60,9 @@ export const LocationEdit = (props) => (
   <Edit code={<LocationCode />} {...props}>
     <SimpleForm>
       <TextInput source='code' />
+      <TextInput source='county' />
       <TextInput source='neighborhood' />
-      <TextInput source='bourough' />
-      <BooleanInput source='status' />
+      <TextInput source='state' />
     </SimpleForm>
   </Edit>
 )
@@ -69,9 +71,9 @@ export const LocationCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source='code' />
+      <TextInput source='county' />
       <TextInput source='neighborhood' />
-      <TextInput source='bourough' />
-      <BooleanInput source='status' />
+      <TextInput source='state' />
     </SimpleForm>
   </Create>
 )

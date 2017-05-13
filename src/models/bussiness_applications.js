@@ -9,8 +9,8 @@ import {
   Datagrid,
   ReferenceField,
   TextField,
-  // BooleanField,
-  // BooleanInput,
+  BooleanField,
+  BooleanInput,
   EditButton,
   DisabledInput,
   ReferenceInput,
@@ -19,17 +19,17 @@ import {
   TextInput
 } from 'admin-on-rest/lib/mui'
 
-const BusinessFilter = (props) => (
+const BusinessAppFilter = (props) => (
   <Filter {...props}>
     <TextInput label='Search' source='q' alwaysOn />
-    <ReferenceInput label='User' source='user_id' reference='users' allowEmpty>
-      <SelectInput optionText='users' />
+    <ReferenceInput label='Address' source='address' reference='businesses' allowEmpty>
+      <SelectInput optionText='address' />
     </ReferenceInput>
   </Filter>
 )
 
-export const BusinessList = (props) => (
-  <List {...props} filters={<BusinessFilter />}>
+export const BusinessAppList = (props) => (
+  <List {...props} filters={<BusinessAppFilter />}>
     <Responsive
       small={
         <SimpleList
@@ -42,12 +42,12 @@ export const BusinessList = (props) => (
         <Datagrid>
           <TextField label='Id' source='id' />
           <TextField label='Business Name' source='name' />
-          <TextField label='Description' source='name' />
           <TextField label='Phone' source='phone_number' />
-          <TextField label='Email' source='email' />
+          <TextField label='Address' source='address_id' />
           <ReferenceField label='User Id' source='user_id' reference='users'>
             <TextField source='id' />
           </ReferenceField>
+          <BooleanField label='Approved' source='approved' />
           <EditButton />
         </Datagrid>
       }
@@ -55,34 +55,36 @@ export const BusinessList = (props) => (
   </List>
 )
 
-const BusinessName = ({ record }) => {
+const BusinessAppName = ({ record }) => {
   return <span>Business {record ? `"${record.name}"` : ''}</span>
 }
 
-export const BusinessEdit = (props) => (
-  <Edit name={<BusinessName />} {...props}>
+export const BusinessAppEdit = (props) => (
+  <Edit name={<BusinessAppName />} {...props}>
     <SimpleForm>
       <DisabledInput source='id' />
       <TextInput label='Business Name' source='name' />
       <TextInput label='Phone' source='phone_number' />
-      <TextInput label='Email' source='email' />
+      <TextInput label='Address' source='address' />
       <ReferenceInput label='User' source='user_id' reference='users'>
         <selectInput optionText='id' />
       </ReferenceInput>
+      <BooleanInput label='Approved' source='approved' />
     </SimpleForm>
   </Edit>
 )
 
-export const BusinessCreate = (props) => (
+export const BusinessAppCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <DisabledInput source='id' />
       <TextInput label='Business Name' source='name' />
       <TextInput label='Phone' source='phone_number' />
-      <TextInput label='Email' source='email' />
+      <TextInput label='Address' source='address' />
       <ReferenceInput label='User' source='user_id' reference='users' allowEmpty>
         <SelectInput optionText='id' />
       </ReferenceInput>
+      <BooleanInput label='Approved' source='approved' />
     </SimpleForm>
   </Create>
 )

@@ -23,7 +23,7 @@ const httpClient = (url, options) => {
   options.headers.set('X-Authentication-Token', token)
   return fetchUtils.fetchJson(url, options)
 }
-const restClient = jsonServerRestClient('http://localhost:3000/v1', httpClient)
+const restClient = jsonServerRestClient('http://localhost:3000', httpClient)
 
 import {
   deepPurple500, deepPurple700,

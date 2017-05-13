@@ -5,7 +5,7 @@ export default (type, params) => {
   if (type === AUTH_LOGIN) {
     const { username, password } = params
     const email = username
-    const request = new Request('http://localhost:3000/v1/auth/login', {
+    const request = new Request('http://localhost:3000/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: new Headers({ 'Content-Type': 'application/json' })

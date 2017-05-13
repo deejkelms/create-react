@@ -15,8 +15,8 @@ import {
   SelectInput,
   SimpleForm,
   TextInput,
-  EmailField
-  // BooleanField
+  EmailField,
+  BooleanField
 } from 'admin-on-rest/lib/mui'
 
 const UserFilter = (props) => (
@@ -44,7 +44,8 @@ export const UserList = (props) => (
           <TextField label='Last Name' source='last_name' />
           <EmailField source='email' />
           <TextField label='Phone' source='phone_number' />
-          <TextField label='Zip Code' source='zip_code' />
+          <TextField label='Zip Code' source='registration_zipcode' />
+          <BooleanField source='admin' />
           <EditButton />
         </Datagrid>
       }
